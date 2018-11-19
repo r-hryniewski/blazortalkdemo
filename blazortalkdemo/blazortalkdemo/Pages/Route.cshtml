@@ -1,0 +1,9 @@
+﻿@page "/route"
+@page "/route/{param}"
+
+<h4>I'm component with parameter from route: <i>@Param</i></h4>
+
+@functions {
+    [Parameter]
+    private string Param { get; set; } = "Default param value";
+}

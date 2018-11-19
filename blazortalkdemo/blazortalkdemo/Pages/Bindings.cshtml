@@ -1,0 +1,21 @@
+﻿@page "/bindings"
+
+<h3>Bindings demo:</h3>
+<input bind="@newValue" />
+<button onclick="@Add">Add</button>
+<h4>Values:</h4>
+@foreach (var val in values)
+{
+    <p>@val</p>
+}
+
+@functions{
+    private string newValue = "";
+    private List<string> values = new List<string>();
+
+    private void Add()
+    {
+        values.Add(newValue);
+        newValue = "";
+    }
+}

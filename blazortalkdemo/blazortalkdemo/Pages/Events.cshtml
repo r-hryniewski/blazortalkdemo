@@ -1,0 +1,41 @@
+﻿@page "/events"
+@using System.Runtime.CompilerServices
+
+<h3>Browser events demo:</h3>
+<p>Key press:</p>
+<input onkeypress="@OnKeyPress" 
+    onclick="@OnClick" 
+    onblur="@OnBlur" 
+    onfocus="@OnFocus" 
+    onmouseover="@OnMouseOver"/>
+<p>Events:</p>
+<p>@string.Join(", ", events)</p>
+
+@functions{
+    private List<string> events = new List<string>();
+
+    private void OnKeyPress(UIKeyboardEventArgs eventArgs)
+    {
+        events.Add($"Key pressed: {eventArgs.Key}");
+    }
+
+    private void OnClick()
+    {
+        events.Add("Mouse clicked");
+    }
+
+    private void OnBlur()
+    {
+        events.Add("Blurred");
+    }
+
+    private void OnFocus()
+    {
+        events.Add($"Focused");
+    }
+
+    private void OnMouseOver()
+    {
+        events.Add($"Mouse over");
+    }
+}
