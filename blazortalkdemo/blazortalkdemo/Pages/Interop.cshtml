@@ -30,13 +30,6 @@
     
     async Task Invoke()
     {
-    
         await JSRuntime.Current.InvokeAsync<string>(functionName);
-    }
-    
-    [JSInvokable(nameof(ReturnRandomGuid))]
-    public static string ReturnRandomGuid()
-    {
-        return Guid.NewGuid().ToString();
     }
 }

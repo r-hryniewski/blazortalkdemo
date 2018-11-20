@@ -2,32 +2,32 @@
 
 <h3>Canvas</h3>
 <div>
-    <BECanvas ref="canvasRef" width="200" height="200"></BECanvas>
+    <BECanvas ref="@canvasRef" width="200" height="200"></BECanvas>
 </div>
 <div>
     <button class="btn btn-primary" onclick="@FillGreen">Fill green</button>
     <button class="btn btn-primary" onclick="@FillBlue">Fill blue</button>
 </div>
 @functions {
-private Canvas2dContext canvasCtx;
-private BECanvas canvasRef;
+    private Canvas2dContext canvasCtx;
+    private BECanvas canvasRef;
+    private string fillStyle= "red";
 
-protected override void OnAfterRender()
-{
-    canvasCtx = canvasRef.CreateCanvas2d();
-    canvasCtx.FillStyle = "red";
-    canvasCtx.FillRect(10, 10, 200, 200);
-}
 
-private void FillGreen()
-{
-    canvasCtx.FillStyle = "green";
-    canvasCtx.FillRect(10, 10, 200, 200);
-}
+    protected override void OnAfterRender()
+    {
+        canvasCtx = canvasRef.CreateCanvas2d();
+        canvasCtx.FillStyle = fillStyle;
+        canvasCtx.FillRect(10, 10, 200, 200);
+    }
 
-private void FillBlue()
-{
-    canvasCtx.FillStyle = "blue";
-    canvasCtx.FillRect(10, 10, 200, 200);
-}
+    private void FillGreen()
+    {
+        fillStyle = "green";
+    }
+
+    private void FillBlue()
+    {
+        fillStyle = "blue";
+    }
 }

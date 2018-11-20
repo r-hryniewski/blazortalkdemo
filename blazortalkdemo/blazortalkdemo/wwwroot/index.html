@@ -21,7 +21,7 @@
         },
 
         printRandomGuid: function() {
-            DotNet.invokeMethodAsync('ReturnRandomGuid')
+            DotNet.invokeMethodAsync('blazortalkdemo', 'ReturnRandomGuid')
                 .then(n => {
                     alert(n);
                 });
