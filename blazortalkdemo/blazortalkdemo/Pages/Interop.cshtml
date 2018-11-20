@@ -1,0 +1,42 @@
+﻿@page "/interop"
+
+<h4>Interop</h4>
+
+<div>
+    <button class="btn btn-primary" onclick="@InvokeAlarm">
+        JS-Alert
+    </button>
+
+    <button class="btn btn-primary" onclick="interopFunctions.printRandomGuid()">
+        .NET-Random
+    </button>
+</div>
+
+<h4>Enter JS function name</h4>
+<div>
+    <input bind="@functionName" />
+    <button onclick="@Invoke">Invoke</button>
+</div>
+
+
+
+@functions {
+    private string functionName;
+    
+    async Task InvokeAlarm()
+    {
+        await JSRuntime.Current.InvokeAsync<string>("interopFunctions.showAlert");
+    }
+    
+    async Task Invoke()
+    {
+    
+        await JSRuntime.Current.InvokeAsync<string>(functionName);
+    }
+    
+    [JSInvokable(nameof(ReturnRandomGuid))]
+    public static string ReturnRandomGuid()
+    {
+        return Guid.NewGuid().ToString();
+    }
+}
